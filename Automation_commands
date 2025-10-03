@@ -1,6 +1,6 @@
-                                                                                    #Automation Commands
+                                                                                    # Automation Commands
 
-##Find IP Address from list of subdomains 
+## Find IP Address from list of subdomains 
 ``` while IFS= read -r line;do nslookup -type=A $line;done < subdomains.txt  | grep -oE '([0-9]{1,3}\.){3}[0-9]{1,3}' | anew ips.txt ``` 
 
 ✅ On GitHub, it will render like this:
