@@ -1,0 +1,27 @@
+<h1 align="center">👋 H1 there,  make your work easy with these automation commands</h1>                                                                                    # Automation Commands
+
+### Find IP Address from list of subdomains 
+``` while IFS= read -r line;do nslookup -type=A $line;done < subdomains.txt  | grep -oE '([0-9]{1,3}\.){3}[0-9]{1,3}' | anew ips.txt ``` 
+
+### GNU parallel, you can run multiple whatweb scans simultaneously,
+    cat http_200.txt | parallel whatweb {}
+    
+  ## Explanation:
+  - cat http_200.txt outputs all URLs.
+  - parallel whatweb {} runs whatweb on each line ({} is replaced by the URL).
+  - By default, parallel runs as many jobs as you have CPU cores.
+    
+  ## Limit the number of concurrent jobs
+    cat http_200.txt | parallel -j 10 whatweb {}
+  - -j 10 limits it to 10 simultaneous scans (adjust based on your CPU/network).
+  ## Show which URL is being scanned
+      cat http_200.txt | parallel --tag whatweb {}
+  - --tag prefixes the output with the URL, so you know which result belongs to which target.
+   ## Save output to a file
+       cat http_200.txt | parallel --tag whatweb {} > whatweb_results.txt```
+  - All results are saved in whatweb_results.txt for later analysis.
+
+
+
+more Commands comming SOON......
+
